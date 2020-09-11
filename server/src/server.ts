@@ -1,12 +1,13 @@
 import express from 'express';
-
-const app = express();
-app.use(express.json());
+import routes from './routes';
+import cors from 'cors';
 
 const port = 3333;
 
-app.get('/', (request,response) =>{
-    return response.json({message:"Hello world!"});
-})
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use(routes);
 
 app.listen(port);
